@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Appointment Booking System</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">☁️ <span>AppointCloud</span></div>
+  <nav>
+    <button class="nav-btn active" onclick="showPage('home')">Home</button>
+    <button class="nav-btn" onclick="showPage('book')">Book</button>
+    <button class="nav-btn" onclick="showPage('appointments')">My Appointments</button>
+    <button class="nav-btn" id="loginNav" onclick="showPage('login')">Login</button>
+    <button class="nav-btn hidden" id="logoutBtn" onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<main>
+  <section id="home" class="page active">
+    <div class="hero">
+      <div>
+        <p class="eyebrow">SIMPLE • FAST • CLOUD BASED</p>
+        <h1>Book your appointment <span>easily.</span></h1>
+        <p class="hero-text">Choose a service, select a convenient time, and manage your appointments from one simple platform.</p>
+        <div class="hero-actions">
+          <button class="primary" onclick="showPage('book')">Book Appointment</button>
+          <button class="secondary" onclick="showPage('appointments')">View Appointments</button>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="calendar-icon">📅</div>
+        <h3>Easy Scheduling</h3>
+        <p>Manage bookings without phone calls or paperwork.</p>
+        <div class="mini-row"><span>✓</span> Available time slots</div>
+        <div class="mini-row"><span>✓</span> Instant confirmation</div>
+        <div class="mini-row"><span>✓</span> Appointment history</div>
+      </div>
+    </div>
+
+    <div class="features">
+      <div class="feature"><b>📅</b><h3>Easy Booking</h3><p>Book appointments in a few clicks.</p></div>
+      <div class="feature"><b>☁️</b><h3>Cloud Storage</h3><p>Appointment details are stored online.</p></div>
+      <div class="feature"><b>🔔</b><h3>Clear Status</h3><p>Track booked, completed and cancelled appointments.</p></div>
+    </div>
+  </section>
+
+  <section id="login" class="page">
+    <div class="form-card">
+      <h2 id="authTitle">Welcome Back</h2>
+      <p class="muted">Login to manage your appointments.</p>
+      <form id="authForm">
+        <div id="nameGroup" class="hidden"><label>Name</label><input id="name" type="text"></div>
+        <label>Email</label><input id="email" type="email" required>
+        <label>Password</label><input id="password" type="password" required>
+        <button class="primary full" type="submit">Login</button>
+      </form>
+      <p id="authSwitch">Don't have an account? <button class="link" onclick="toggleAuth()">Register</button></p>
+      <div id="authMessage" class="message"></div>
+    </div>
+  </section>
+
+  <section id="book" class="page">
+    <div class="section-head"><div><p class="eyebrow">SCHEDULE</p><h2>Book an Appointment</h2></div></div>
+    <div class="form-card wide">
+      <form id="bookingForm">
+        <label>Service</label>
+        <select id="service" required>
+          <option value="">Select a service</option>
+          <option>Doctor Consultation</option>
+          <option>Salon Appointment</option>
+          <option>Bank Consultation</option>
+          <option>Academic Counselling</option>
+          <option>General Consultation</option>
+        </select>
+        <div class="two">
+          <div><label>Date</label><input id="date" type="date" required></div>
+          <div><label>Time</label><select id="time" required>
+            <option value="">Select time</option>
+            <option>09:00 AM</option><option>10:00 AM</option><option>11:00 AM</option>
+            <option>12:00 PM</option><option>02:00 PM</option><option>03:00 PM</option>
+            <option>04:00 PM</option><option>05:00 PM</option>
+          </select></div>
+        </div>
+        <label>Notes (optional)</label>
+        <textarea id="notes" rows="4" placeholder="Add any additional information..."></textarea>
+        <button class="primary full" type="submit">Confirm Appointment</button>
+      </form>
+      <div id="bookingMessage" class="message"></div>
+    </div>
+  </section>
+
+  <section id="appointments" class="page">
+    <div class="section-head"><div><p class="eyebrow">DASHBOARD</p><h2>My Appointments</h2></div><button class="primary" onclick="loadAppointments()">Refresh</button></div>
+    <div id="appointmentList" class="appointment-list">
+      <div class="empty">Login to view your appointments.</div>
+    </div>
+  </section>
+</main>
+
+<footer>AppointCloud • Cloud-Based Appointment Booking System</footer>
+<script src="script.js"></script>
+</body>
+</html>
